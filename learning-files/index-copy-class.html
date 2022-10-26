@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	#h{
+		border: 2px solid white;
+	}
+	p, div {
+		margin: 5px;
+		padding: 5px;
+		border:2px solid green;
+	}
+	.border {
+		border: 2px solid red;
+	}
+	.background {
+		background: lightgrey;
+	}
+	.left, .right {
+		width: 45%;
+		float: left;
+		border:2px solid green;
+	}
+	.right {
+		margin-left: 3%;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<div class="left">
+	<p id="h"><strong>Before <code>addBack()</code></strong></p>
+		<div class="before-addback">
+			<p>First Paragraph</p>
+			<p>Second Paragraph</p>
+		</div>
+</div>
+<div class="right">
+	<p id="h"><strong>After <code>addBack()</code></strong></p>
+		<div class="after-addback">
+			<p>First Paragraph</p>
+			<p>Second Paragraph</p>
+		</div>
+</div>
+
+<script>
+$( ".before-addback" ).find( "p" ).addClass( "background" );
+$( ".before-addback1" ).find( "p" ).addClass( "background" );
+$( ".after-addback" ).addBack("p").addClass( "background" );
+</script>
+</body>
+</html>
