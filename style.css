@@ -78,7 +78,9 @@ textarea {
 
 /* all-task container */
 .all-tasks{
-  
+  display: flex;
+  flex-direction: column;
+
 }
 
 /* one-task containter */
@@ -86,8 +88,10 @@ textarea {
   display: flex;
   justify-content:  center;
   height: 60px;
-  list-style: none;
+  margin-bottom: 0%;
   font-size: 25px;
+  list-style: none;
+  
 }
 
 
