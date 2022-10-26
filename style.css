@@ -74,16 +74,31 @@ textarea {
 
 
 /* Scheduler Aes */
+
+
+/* containter */
+.one-task{
+  display: flex;
+  justify-content:  center;
+  height: 40px;
+}
+
+
+
+/* Time */
 .time {
   background-color: green;
+  width: 10%;
 }
-
+/* Task */
 .task {
   background-color: orange;
+  width: 80%;
 }
-
+/* Save */
 .save {
 
   background-color: yellow;
+  width: 10%;
 
 }
