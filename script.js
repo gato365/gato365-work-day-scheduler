@@ -2,7 +2,7 @@
 
 var timeDisplayEl = $('#time-display');
 var classTask = $('.one-task')
-var allWorkingHours = document.querySelector('.all-tasks');
+var allWorkingHours = document.querySelector('.container');
 let numberHours = 16;
 
 
@@ -16,14 +16,23 @@ displayTime();
 
 
 for (let j = 9; j <= numberHours; j++) {
- // Text for Time
- // textarea for entering task
- // button to save task
- 
-document.createElement('div')
-document.createElement('textarea')
-document.createElement('button')
 
-allWorkingHours
+ 
+var sectionTask = document.createElement('section')
+
+sectionTask.setAttribute('class','all-tasks row time-block');
+var timeTask = document.createElement('div')
+timeTask.setAttribute('class','hour');
+timeTask.textContent = j
+var descriptionTask = document.createElement('textarea')
+descriptionTask.setAttribute('class','description present col-10');
+var buttonTask = document.createElement('button')
+buttonTask.setAttribute('class','saveBtn');
+
+
+sectionTask.append(timeTask)
+sectionTask.append(descriptionTask)
+sectionTask.append(buttonTask)
+allWorkingHours.append(sectionTask)
  
 }
