@@ -8,3 +8,6 @@ function displayTime() {
     timeDisplayEl.text(rightNow);
   }
 
+
+displayTime();
+
