@@ -21,6 +21,8 @@ for (let j = 9; j <= numberHours; j++) {
 var sectionTask = document.createElement('section')
 
 sectionTask.setAttribute('class','all-tasks row time-block');
+
+// Create Time Block content
 var timeTask = document.createElement('div')
 timeTask.setAttribute('class','hour');
 
@@ -37,10 +39,18 @@ if(j < 12){
 }
 timeTask.textContent = jRotate + determineMidday;
 
-var descriptionTask = document.createElement('textarea')
-descriptionTask.setAttribute('class','description present col-10');
+
+//Create Save Box content
 var buttonTask = document.createElement('button')
 buttonTask.setAttribute('class','saveBtn');
+// Issue 3: Put Text Later
+buttonTask.textContent = 'Save';
+
+
+
+var descriptionTask = document.createElement('textarea')
+descriptionTask.setAttribute('class','description present col-10');
+
 
 
 sectionTask.append(timeTask)
