@@ -23,7 +23,20 @@ var sectionTask = document.createElement('section')
 sectionTask.setAttribute('class','all-tasks row time-block');
 var timeTask = document.createElement('div')
 timeTask.setAttribute('class','hour');
-timeTask.textContent = j
+
+if(j < 12){
+  determineMidday = ' AM';
+  jRotate = j;
+} else if (j>= 12){
+  determineMidday = ' PM'
+  if (j> 12){
+  jRotate = j - 12;  
+  } else {
+    jRotate = j;
+  }
+}
+timeTask.textContent = jRotate + determineMidday;
+
 var descriptionTask = document.createElement('textarea')
 descriptionTask.setAttribute('class','description present col-10');
 var buttonTask = document.createElement('button')
