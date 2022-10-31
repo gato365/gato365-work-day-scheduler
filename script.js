@@ -15,6 +15,9 @@ function displayTime() {
 displayTime();
 
 
+
+var currentTime = 11;
+
 for (let j = 9; j <= numberHours; j++) {
 
  
@@ -49,7 +52,22 @@ buttonTask.textContent = 'Save';
 
 
 var descriptionTask = document.createElement('textarea')
+
+if( j == currentTime){
+
 descriptionTask.setAttribute('class','description present col-10');
+
+} else if (j < currentTime){
+  descriptionTask.setAttribute('class','description past col-10');
+} else if (j > currentTime){
+  descriptionTask.setAttribute('class','description future col-10');
+}
+
+
+
+
+
+
 
 
 
