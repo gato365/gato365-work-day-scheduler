@@ -45,9 +45,9 @@ timeTask.textContent = jRotate + determineMidday;
 
 //Create Save Box content
 var buttonTask = document.createElement('button')
-buttonTask.setAttribute('class','saveBtn');
+buttonTask.setAttribute('class','saveBtn fa fa-save');
 // Issue 3: Put Text Later
-buttonTask.textContent = 'Save';
+// buttonTask.textContent = 'Save';
 
 
 
