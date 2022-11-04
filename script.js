@@ -15,55 +15,62 @@ function displayTime() {
 displayTime();
 
 
+var displayFakeTime = true;
 
-var currentTime = 11;
+
+var currentTime;
+if (displayFakeTime == true) {
+  currentTime = 11;
+} else if (displayFakeTime == false) {
+  currentTime = moment().hours();
+}
+
+
 
 for (let j = 9; j <= numberHours; j++) {
 
- 
-var sectionTask = document.createElement('section')
 
-sectionTask.setAttribute('class','all-tasks row time-block');
+  var sectionTask = document.createElement('section')
 
-// Create Time Block content
-var timeTask = document.createElement('div')
-timeTask.setAttribute('class','hour');
+  sectionTask.setAttribute('class', 'all-tasks row time-block');
 
-if(j < 12){
-  determineMidday = ' AM';
-  jRotate = j;
-} else if (j>= 12){
-  determineMidday = ' PM'
-  if (j> 12){
-  jRotate = j - 12;  
-  } else {
+  // Create Time Block content
+  var timeTask = document.createElement('div')
+  timeTask.setAttribute('class', 'hour');
+
+  if (j < 12) {
+    determineMidday = ' AM';
     jRotate = j;
+  } else if (j >= 12) {
+    determineMidday = ' PM'
+    if (j > 12) {
+      jRotate = j - 12;
+    } else {
+      jRotate = j;
+    }
   }
-}
-timeTask.textContent = jRotate + determineMidday;
+  timeTask.textContent = jRotate + determineMidday;
 
 
-//Create Save Box content
-var buttonTask = document.createElement('button')
-buttonTask.setAttribute('class','saveBtn fa fa-save');
-// Issue 3: Put Text Later
-// buttonTask.textContent = 'Save';
+  //Create Save Box content
+  var buttonTask = document.createElement('button')
+  buttonTask.setAttribute('class', 'saveBtn fa fa-save');
+  // Issue 3: Put Text Later
+  // buttonTask.textContent = 'Save';
 
 
 
-var descriptionTask = document.createElement('textarea')
+  var descriptionTask = document.createElement('textarea')
 
-if( j == currentTime){
+  if (j == currentTime) {
 
-descriptionTask.setAttribute('class','description present col-10');
+    descriptionTask.setAttribute('class', 'description present col-10');
 
-} else if (j < currentTime){
-  descriptionTask.setAttribute('class','description past col-10');
-} else if (j > currentTime){
-  descriptionTask.setAttribute('class','description future col-10');
-}
-
-
+  } else if (j < currentTime) {
+    descriptionTask.setAttribute('class', 'description past col-10');
+  } else if (j > currentTime) {
+    descriptionTask.setAttribute('class', 'description future col-10');
+  }
 
 
 
@@ -71,9 +78,11 @@ descriptionTask.setAttribute('class','description present col-10');
 
 
 
-sectionTask.append(timeTask)
-sectionTask.append(descriptionTask)
-sectionTask.append(buttonTask)
-allWorkingHours.append(sectionTask)
- 
+
+
+  sectionTask.append(timeTask)
+  sectionTask.append(descriptionTask)
+  sectionTask.append(buttonTask)
+  allWorkingHours.append(sectionTask)
+
 }
