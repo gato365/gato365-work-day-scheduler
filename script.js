@@ -15,9 +15,8 @@ function displayTime() {
 displayTime();
 
 
+// Get Time of day
 var displayFakeTime = true;
-
-
 var currentTime;
 if (displayFakeTime == true) {
   currentTime = 11;
@@ -78,11 +77,43 @@ for (let j = 9; j <= numberHours; j++) {
 
 
 
-
-
   sectionTask.append(timeTask)
   sectionTask.append(descriptionTask)
   sectionTask.append(buttonTask)
   allWorkingHours.append(sectionTask)
 
+}
+
+
+
+buttonTask.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  // set new submission to local storage 
+  localStorage.setItem("description", JSON.stringify(descriptionTask));
+
+})
+
+
+
+
+// This function is being called below and will run when the page loads.
+function init() {
+  // Get stored todos from localStorage
+  var storedDescription = JSON.parse(localStorage.getItem("description"));
+
+  // If description were retrieved from localStorage, update the description array to it
+  if (storedDescription !== null) {
+    description = storedDescription;
+  }
+
+  // This is a helper function that will render Description to the DOM
+  renderDescription();
+}
+
+
+
+function storeDescription() {
+  // Stringify and set key in localStorage to todos array
+  localStorage.setItem("description", JSON.stringify(description));
 }
