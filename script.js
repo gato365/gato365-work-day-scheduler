@@ -13,6 +13,7 @@ function displayTime() {
 
 
 displayTime();
+init();
 
 function renderDescription(){
   // Get Time of day
@@ -24,7 +25,7 @@ function renderDescription(){
     currentTime = moment().hours();
   }
 
-
+  
 
   for (let j = 9; j <= numberHours; j++) {
 
@@ -62,9 +63,7 @@ function renderDescription(){
     var descriptionTask = document.createElement('textarea')
 
     if (j == currentTime) {
-
       descriptionTask.setAttribute('class', 'description present col-10');
-
     } else if (j < currentTime) {
       descriptionTask.setAttribute('class', 'description past col-10');
     } else if (j > currentTime) {
@@ -86,14 +85,13 @@ function renderDescription(){
 }
 
 
+// buttonTask.addEventListener("click", function (event) {
+//   event.preventDefault();
 
-buttonTask.addEventListener("click", function (event) {
-  event.preventDefault();
+//   // set new submission to local storage 
+//   localStorage.setItem("description", JSON.stringify(descriptionTask));
 
-  // set new submission to local storage 
-  localStorage.setItem("description", JSON.stringify(descriptionTask));
-
-})
+// })
 
 
 
@@ -114,7 +112,7 @@ function init() {
 
 
 
-function storeDescription() {
-  // Stringify and set key in localStorage to todos array
-  localStorage.setItem("description", JSON.stringify(description));
-}
+// function storeDescription() {
+//   // Stringify and set key in localStorage to todos array
+//   localStorage.setItem("description", JSON.stringify(description));
+// }
