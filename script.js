@@ -112,7 +112,29 @@ function init() {
 
 
 
-// function storeDescription() {
-//   // Stringify and set key in localStorage to todos array
-//   localStorage.setItem("description", JSON.stringify(description));
-// }
+function storeDescription() {
+  // Stringify and set key in localStorage to todos array
+  localStorage.setItem("description", JSON.stringify(description));
+  console.log('Work');
+}
+
+
+
+// Add click event to allWorkingHours element
+allWorkingHours.addEventListener("click", function(event) {
+  var element = event.target;
+  
+  // console.log('Work');
+
+
+  // Checks if element is a button
+  if (element.matches("button") === true) {
+    // Get its data-index value and remove the todo element from the list
+    var index = element.parentElement.getAttribute("data-index");
+    todos.splice(index, 1);
+
+    // Store updated todos in localStorage, re-render the list
+    storeDescription();
+    renderDescription();
+  }
+});
