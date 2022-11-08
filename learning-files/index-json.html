@@ -21,38 +21,38 @@
     <script>
 
 
-        //~~~~~~~~~~~~~~~~~~~Though 1~~~~~~~~~~~~~~~~~~~//
+        //~~~~~~~~~~~~~~~~~~~Thought 1~~~~~~~~~~~~~~~~~~~//
         // Ability to replace index of a string
         String.prototype.replaceAt = function (index, replacement) {
             return this.substring(0, index) + replacement + this.substring(index + replacement.length);
         }
 
-        //~~~~~~~~~~~~~~~~~~~Though 2~~~~~~~~~~~~~~~~~~~//
+        //~~~~~~~~~~~~~~~~~~~Thought 2~~~~~~~~~~~~~~~~~~~//
         // This obj stores info that is hard to understand (extract) aka JSON
         var obj = { "first_name": "Sammy", "last_name": "Shark", "location": "Ocean" };
         console.log('Below is the object:');
         console.log(obj);
 
 
-        //~~~~~~~~~~~~~~~~~~~Though 3~~~~~~~~~~~~~~~~~~~//
+        //~~~~~~~~~~~~~~~~~~~Thought 3~~~~~~~~~~~~~~~~~~~//
         // So we stringify it to be able to have as asses to the information (make it into a string)
         var s = JSON.stringify(obj);
         console.log('Below is object stringify:');
         console.log(s);
 
 
-        //~~~~~~~~~~~~~~~~~~~Though 4~~~~~~~~~~~~~~~~~~~//
+        //~~~~~~~~~~~~~~~~~~~Thought 4~~~~~~~~~~~~~~~~~~~//
         // Change a letter in string to able to see how info in html is different 
         s = s.replaceAt(15, "B");
 
 
-        //~~~~~~~~~~~~~~~~~~~Though 5~~~~~~~~~~~~~~~~~~~//
+        //~~~~~~~~~~~~~~~~~~~Thought 5~~~~~~~~~~~~~~~~~~~//
         // We can also make the stringify string back into a JSON
         var obj1 = JSON.parse(s);
         console.log(obj1);
 
 
-        //~~~~~~~~~~~~~~~~~~~Though 6~~~~~~~~~~~~~~~~~~~//
+        //~~~~~~~~~~~~~~~~~~~Thought 6~~~~~~~~~~~~~~~~~~~//
         // Stores info from JSON into HTML (I just want to see it)
         document.getElementById("user").innerHTML =
             "Name: " + obj1.first_name + " " + obj1.last_name + "<br>" +

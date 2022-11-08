@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <style>
+
+    </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+
+    <p id="user"></p>
+
+    <script>
+
+        // Ability to replace index of a string
+        String.prototype.replaceAt = function (index, replacement) {
+            return this.substring(0, index) + replacement + this.substring(index + replacement.length);
+        }
+
+
+        // Logic 0 (purpose): 
+        // a) We want to store information in local storage  
+        // b) We want to have access to the information in local store eventually
+
+        // Logic 1: We have the JSON
+        var obj = { "first_name": "Bammy", "last_name": "Shark", "location": "Ocean" };
+
+        // Mistake 1: This returns the information when we store as an OBJECT into local storage (NOT GOOD)
+        localStorage.setItem('foo-1', obj);
+        // This is how we retrieve the info
+        const foo1 = localStorage.getItem('foo-1');
+        console.log(foo1);
+
+
+        // Logic 2: We store JSON into a string
+        var s = JSON.stringify(obj);
+        localStorage.setItem('foo-2', s);
+        const foo2 = localStorage.getItem('foo-2');
+        console.log(foo2);
+
+        // BUT-FIRST!!! - Change a element of string so it is different
+        s = s.replaceAt(15, "T");
+        console.log(s);
+
+        // Logic 3: Turn string into a JSON AGAIN!!! to be able to parse it as needed
+
+        const obj1 = JSON.parse(s);
+
+
+        document.getElementById("user").innerHTML =
+            "Name: " + obj1.first_name + " " + obj1.last_name + "<br>" +
+            "Location: " + obj1.location;
+
+
+
+
+    </script>
+</body>
+
+</html>
