@@ -9,19 +9,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <style>
-        #info1{
+        #info1 {
             width: 100px;
             height: 100px;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 </head>
 
 <body>
 
-<textarea id = "info1" ></textarea>
+    <main>
+        <h1>Password Generator</h1>
+        <h2>Click on the button to get started!</h2>
+        <hr />
 
+        <label for="password-len">Length of password:</label>
+        <input type="text" id="password-len" name="password-len"><br><br>
+        <pre class="text-dark bg-light p-5" id="password-display">Password will go here...</pre>
+        <button id="password-btn" class="btn btn-block btn-info ">Generate Password</button>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
+        // Get id from html using jquery
+        
+        var passwordBtnEl = $('#password-btn');
+        var passwordDisplayEl = $('#password-display');
+
+
+        
+
+        // Function returns a random character that includes alphanumeric and special character values
+        function getPasswordCharacter() {
+            return String.fromCharCode(Math.floor(Math.random() * 77) + 34);
+        }
+
+        // Function returns a string of concatenated characters of length num
+        function passwordGenerator(num) {
+            var password = '';
+            for (var i = 0; i < num; i++) {
+                password += getPasswordCharacter();
+            }
+            return password;
+        }
+
+        // Change the event listener to `click` to make the event trigger on single-click
+        passwordBtnEl.on('click', function () {
+            var passwordLength = $('#password-len').val();
+            var newPassword = passwordGenerator(passwordLength);
+            passwordDisplayEl.text(newPassword);
+        });
 
     </script>
 </body>
