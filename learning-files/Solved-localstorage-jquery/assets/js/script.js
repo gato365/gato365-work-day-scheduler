@@ -1,7 +1,7 @@
-var todoInput = document.querySelector("#todo-text");
-var todoForm = document.querySelector("#todo-form");
-var todoList = document.querySelector("#todo-list");
-var todoCountSpan = document.querySelector("#todo-count");
+var todoInput = $("#todo-text");
+var todoForm = $("#todo-form");
+var todoList = $("#todo-list");
+var todoCountSpan = $("#todo-count");
 
 var todos = [];
 

@@ -1,20 +1,35 @@
-
-
+// Specify Variables 
 var timeDisplayEl = $('#time-display');
 var classTask = $('.one-task')
 var allWorkingHours = document.querySelector('.container');
 let numberHours = 16;
 
 
+// -----------------Function Definitions--------------------
+// Author: Immanuel Williams PhD 
+// Date Created: 10/25/2022
+// Date Modified: 10/25/2022
+// Name: displayTime
+// Purpose: displays Time
+// Input: NA
+// Output: NA
+// Notes: NA
+// -----------------Function Definitions--------------------
 function displayTime() {
   var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
   timeDisplayEl.text(rightNow);
 }
 
-
-displayTime();
-init();
-
+ //-----------------Function Definitions--------------------
+// Author: Immanuel Williams PhD
+// Date Created: 10/26/2022
+// Date Modified: 10/26/2022
+// Name: renderDescription
+// Purpose: Displays the schedule
+// Input: NA
+// Output: NA
+// Notes: NA
+// -----------------Function Definitions-------------------
 function renderDescription(){
   // Get Time of day
   var displayFakeTime = true;
@@ -55,8 +70,7 @@ function renderDescription(){
     //Create Save Box content
     var buttonTask = document.createElement('button')
     buttonTask.setAttribute('class', 'saveBtn fa fa-save');
-    // Issue 3: Put Text Later
-    // buttonTask.textContent = 'Save';
+ 
 
 
 
@@ -70,12 +84,6 @@ function renderDescription(){
       descriptionTask.setAttribute('class', 'description future col-10');
     }
 
-
-
-
-
-
-
     sectionTask.append(timeTask)
     sectionTask.append(descriptionTask)
     sectionTask.append(buttonTask)
@@ -85,18 +93,24 @@ function renderDescription(){
 }
 
 
-// buttonTask.addEventListener("click", function (event) {
-//   event.preventDefault();
-
-//   // set new submission to local storage 
-//   localStorage.setItem("description", JSON.stringify(descriptionTask));
-
-// })
 
 
 
 
-// This function is being called below and will run when the page loads.
+
+
+
+// -----------------Function Definitions--------------------
+// Author: Immanuel Williams PhD 
+// Date Created: 11/04/2022
+// Date Modified: 11/04/2022
+// Name: init
+// Purpose: This function is being called below and will run when the page loads.
+// Input: NA
+// Output: NA
+// Notes: NA
+// -----------------Function Definitions--------------------
+
 function init() {
   // Get description from localStorage
   var storedDescription = JSON.parse(localStorage.getItem("description"));
@@ -111,30 +125,52 @@ function init() {
 }
 
 
-
-function storeDescription() {
-  // Stringify and set key in localStorage to todos array
-  localStorage.setItem("description", JSON.stringify(description));
-  console.log('Work');
-}
+displayTime();
+init();
 
 
 
-// Add click event to allWorkingHours element
-allWorkingHours.addEventListener("click", function(event) {
-  var element = event.target;
+
+
+
+
+
+
+
+// function storeDescription (event) {
+//   event.preventDefault();
+//   // set new submission to local storage 
+//   localStorage.setItem("description", JSON.stringify(descriptionTask));
+//   console.log('Store Description');
+
+// }
+
+
+
+
+
+
+
+// // Add click event to allWorkingHours element
+// allWorkingHours.addEventListener("click", function(event) {
+//   var element = event.target;
   
-  // console.log('Work');
+//   // console.log('Work');
 
 
-  // Checks if element is a button
-  if (element.matches("button") === true) {
-    // Get its data-index value and remove the todo element from the list
-    var index = element.parentElement.getAttribute("data-index");
-    todos.splice(index, 1);
+//   // Checks if element is a button
+//   if (element.matches("button") === true) {
+//     // Get its data-index value and remove the todo element from the list
+//     var index = element.parentElement.getAttribute("data-index");
+//     todos.splice(index, 1);
 
-    // Store updated todos in localStorage, re-render the list
-    storeDescription();
-    renderDescription();
-  }
-});
+//     // Store updated todos in localStorage, re-render the list
+//     storeDescription();
+//     renderDescription();
+//   }
+// });
+
+
+
+
+// allWorkingHours.on('submit', storeDescription);
