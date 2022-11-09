@@ -25,6 +25,10 @@ body {
 }
 
 
+#information-saved{
+  text-align: center;
+}
+
 
 textarea {
   background: transparent;
@@ -97,3 +101,6 @@ textarea {
   transition: all .3s ease-in-out;
 }
 
+.hide-me{
+  display: none;
+}
