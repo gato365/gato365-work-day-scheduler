@@ -133,9 +133,12 @@ function init() {
 
 function storeDescription(event) {
   event.preventDefault();
-  // set new submission to local storage 
+  // Set new submission to local storage 
   localStorage.setItem("description" + hourIndex, descriptionTask.value);
   console.log('Store Description');
+  // Unhide storage message
+  buttonTask.removeAttribute('class', 'hide-me');
+  
 }
 
 
