@@ -71,7 +71,7 @@ function renderDescription(){
     var buttonTask = document.createElement('button')
     buttonTask.setAttribute('class', 'saveBtn fa fa-save');
  
-
+    buttonTask.on('submit', storeDescription);
 
 
     var descriptionTask = document.createElement('textarea')
@@ -137,15 +137,17 @@ init();
 
 
 
-// function storeDescription (event) {
-//   event.preventDefault();
-//   // set new submission to local storage 
-//   localStorage.setItem("description", JSON.stringify(descriptionTask));
-//   console.log('Store Description');
+function storeDescription(event) {
+  event.preventDefault();
+  // set new submission to local storage 
+  localStorage.setItem("description", JSON.stringify(descriptionTask));
+  console.log('Store Description');
 
-// }
+}
 
+buttonTask.addEventListener("click", function(event){
 
+});
 
 
 
@@ -171,6 +173,3 @@ init();
 // });
 
 
-
-
-// allWorkingHours.on('submit', storeDescription);
