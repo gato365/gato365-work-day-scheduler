@@ -1,7 +1,7 @@
 // Specify Variables 
 var timeDisplayEl = $('#time-display');
 var classTask = $('.one-task');
-var allWorkingHours = document.querySelector('.container');
+var scheduleContainer = document.querySelector('.container');
 var localStorageMessage = document.querySelector('#information-saved');
 let numberHours = 16;
 
@@ -32,8 +32,8 @@ function displayTime() {
 // Notes: NA
 // -----------------Function Definitions-------------------
 function renderDescription() {
-  // Get Time of day
-  var displayFakeTime = true;
+  // Get Time of day but this this allows me to test the mechanism
+  var displayFakeTime = false;
   var currentTime;
   if (displayFakeTime == true) {
     currentTime = 11;
@@ -112,10 +112,14 @@ function renderDescription() {
       descriptionTask.setAttribute('class', 'description future col-10');
     }
 
+
+    // Component 2: Append Task info (time, description and save) into current section 
     sectionTask.append(timeTask)
     sectionTask.append(descriptionTask)
     sectionTask.append(buttonTask)
-    allWorkingHours.append(sectionTask)
+
+    // Component 3: Append Section task into current section 
+    scheduleContainer.append(sectionTask)
 
   }
 }
@@ -135,7 +139,6 @@ function renderDescription() {
 // Output: NA
 // Notes: NA
 // -----------------Function Definitions--------------------
-
 function init() {
   // Get description from localStorage
   var storedDescription = localStorage.getItem("description");
@@ -143,24 +146,32 @@ function init() {
   if (storedDescription !== null) {
     description = storedDescription;
   }
-
-  // This is a helper function that will render Description to the DOM
-  // renderDescription();
 }
 
+
+// -----------------Function Definitions--------------------
+// Author: Immanuel Williams PhD 
+// Date Created: 11/10/2022
+// Date Modified: 11/10/2022
+// Name: storeDescription
+// Purpose: Stores info into local storage
+// Input: NA
+// Output: NA
+// Notes: NA
+// -----------------Function Definitions--------------------
 function storeDescription(event,currentHour,currentText) {
   event.preventDefault();
   // Set new submission to local storage 
   localStorage.setItem("description" + currentHour, currentText);
-  console.log('Store Description');
+  
   
 
 }
-
+// localStorage.clear();
 
 displayTime();
 init();
- renderDescription();
+renderDescription();
 
 
 
