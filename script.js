@@ -1,7 +1,8 @@
 // Specify Variables 
 var timeDisplayEl = $('#time-display');
-var classTask = $('.one-task')
+var classTask = $('.one-task');
 var allWorkingHours = document.querySelector('.container');
+var localStorageMessage = document.querySelector('#information-saved');
 let numberHours = 16;
 
 
@@ -20,7 +21,7 @@ function displayTime() {
   timeDisplayEl.text(rightNow);
 }
 
- //-----------------Function Definitions--------------------
+//-----------------Function Definitions--------------------
 // Author: Immanuel Williams PhD
 // Date Created: 10/26/2022
 // Date Modified: 10/26/2022
@@ -30,7 +31,7 @@ function displayTime() {
 // Output: NA
 // Notes: NA
 // -----------------Function Definitions-------------------
-function renderDescription(){
+function renderDescription() {
   // Get Time of day
   var displayFakeTime = true;
   var currentTime;
@@ -40,7 +41,7 @@ function renderDescription(){
     currentTime = moment().hours();
   }
 
-  
+
 
   for (let hourIndex = 9; hourIndex <= numberHours; hourIndex++) {
 
@@ -72,18 +73,35 @@ function renderDescription(){
     // Part 2: Create a button for each task (save) and classes for each task (save) (displays button symbol)
     var buttonTask = document.createElement('button');
     buttonTask.setAttribute('class', 'saveBtn fa fa-save');
- 
+
     // Part 2a: Create a listener to button     
     buttonTask.addEventListener("click", function (event) {
-      storeDescription(event);
-    });
-    
 
+      var currentHour = hourIndex;
+      var currentText = event.target.previousElementSibling.value;
+      console.log(currentText);
+      storeDescription(event,currentHour,currentText);
+      // Unhide storage message
+      localStorageMessage.removeAttribute('class', 'hide-me');
+
+      setTimeout(() => {
+        localStorageMessage.setAttribute('class', 'hide-me');
+      }, 1000);
+
+
+    });
+
+
+    
 
     // Part 3: Create a textarea for each task (description) and classes for each task (description) 
     var descriptionTask = document.createElement('textarea');
 
+
+    var descripIndex =localStorage.getItem('description'+hourIndex);
+    descriptionTask.value = descripIndex;
     
+
 
     // Part 3a: Specify the type of class for description based on time
     if (hourIndex == currentTime) {
@@ -120,30 +138,29 @@ function renderDescription(){
 
 function init() {
   // Get description from localStorage
-  var storedDescription = JSON.parse(localStorage.getItem("description"));
-
+  var storedDescription = localStorage.getItem("description");
   // If description were retrieved from localStorage, update the description array to it
   if (storedDescription !== null) {
     description = storedDescription;
   }
 
   // This is a helper function that will render Description to the DOM
-  renderDescription();
+  // renderDescription();
 }
 
-function storeDescription(event) {
+function storeDescription(event,currentHour,currentText) {
   event.preventDefault();
   // Set new submission to local storage 
-  localStorage.setItem("description" + hourIndex, descriptionTask.value);
+  localStorage.setItem("description" + currentHour, currentText);
   console.log('Store Description');
-  // Unhide storage message
-  buttonTask.removeAttribute('class', 'hide-me');
   
+
 }
 
 
 displayTime();
 init();
+ renderDescription();
 
 
 
