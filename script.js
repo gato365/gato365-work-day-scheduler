@@ -42,45 +42,55 @@ function renderDescription(){
 
   
 
-  for (let j = 9; j <= numberHours; j++) {
+  for (let hourIndex = 9; hourIndex <= numberHours; hourIndex++) {
 
 
-    var sectionTask = document.createElement('section')
-
+    // Main: Creates a section for each task and classes for each task
+    var sectionTask = document.createElement('section');
     sectionTask.setAttribute('class', 'all-tasks row time-block');
 
-    // Create Time Block content
+    // Part 1: Create a div for each task (time) and a class for each task (time)
     var timeTask = document.createElement('div')
     timeTask.setAttribute('class', 'hour');
 
-    if (j < 12) {
+    // Part 1a: Base on time specify AM and rotation of clock numbers (i.e., 13  = 1 pm)
+    if (hourIndex < 12) {
       determineMidday = ' AM';
-      jRotate = j;
-    } else if (j >= 12) {
+      hourIndexRotate = hourIndex;
+    } else if (hourIndex >= 12) {
       determineMidday = ' PM'
-      if (j > 12) {
-        jRotate = j - 12;
+      if (hourIndex > 12) {
+        hourIndexRotate = hourIndex - 12;
       } else {
-        jRotate = j;
+        hourIndexRotate = hourIndex;
       }
     }
-    timeTask.textContent = jRotate + determineMidday;
+    // Part 1c: Store information into text to be displayed
+    timeTask.textContent = hourIndexRotate + determineMidday;
 
 
-    //Create Save Box content
-    var buttonTask = document.createElement('button')
+    // Part 2: Create a button for each task (save) and classes for each task (save) (displays button symbol)
+    var buttonTask = document.createElement('button');
     buttonTask.setAttribute('class', 'saveBtn fa fa-save');
  
-    buttonTask.on('submit', storeDescription);
+    // Part 2a: Create a listener to button     
+    buttonTask.addEventListener("click", function (event) {
+      storeDescription(event);
+    });
+    
 
 
-    var descriptionTask = document.createElement('textarea')
+    // Part 3: Create a textarea for each task (description) and classes for each task (description) 
+    var descriptionTask = document.createElement('textarea');
 
-    if (j == currentTime) {
+    
+
+    // Part 3a: Specify the type of class for description based on time
+    if (hourIndex == currentTime) {
       descriptionTask.setAttribute('class', 'description present col-10');
-    } else if (j < currentTime) {
+    } else if (hourIndex < currentTime) {
       descriptionTask.setAttribute('class', 'description past col-10');
-    } else if (j > currentTime) {
+    } else if (hourIndex > currentTime) {
       descriptionTask.setAttribute('class', 'description future col-10');
     }
 
@@ -91,9 +101,6 @@ function renderDescription(){
 
   }
 }
-
-
-
 
 
 
@@ -124,6 +131,13 @@ function init() {
   renderDescription();
 }
 
+function storeDescription(event) {
+  event.preventDefault();
+  // set new submission to local storage 
+  localStorage.setItem("description" + hourIndex, descriptionTask.value);
+  console.log('Store Description');
+}
+
 
 displayTime();
 init();
@@ -137,39 +151,8 @@ init();
 
 
 
-function storeDescription(event) {
-  event.preventDefault();
-  // set new submission to local storage 
-  localStorage.setItem("description", JSON.stringify(descriptionTask));
-  console.log('Store Description');
-
-}
-
-buttonTask.addEventListener("click", function(event){
-
-});
 
 
 
-
-
-// // Add click event to allWorkingHours element
-// allWorkingHours.addEventListener("click", function(event) {
-//   var element = event.target;
-  
-//   // console.log('Work');
-
-
-//   // Checks if element is a button
-//   if (element.matches("button") === true) {
-//     // Get its data-index value and remove the todo element from the list
-//     var index = element.parentElement.getAttribute("data-index");
-//     todos.splice(index, 1);
-
-//     // Store updated todos in localStorage, re-render the list
-//     storeDescription();
-//     renderDescription();
-//   }
-// });
 
 
